@@ -8,7 +8,7 @@ import { useState } from 'react'
 const products = [
   {
     id: 1,
-    title: 'Basic Tee',
+    title: '  ',
     href: '#',
     price: '$32.00',
     color: 'Black',
@@ -179,7 +179,6 @@ export default function Example() {
                         />
                       </div>
                     </div>
-
                     <div>
                       <label
                         htmlFor="city"
@@ -197,7 +196,6 @@ export default function Example() {
                         />
                       </div>
                     </div>
-
                     <div>
                       <label
                         htmlFor="country"
@@ -218,7 +216,6 @@ export default function Example() {
                         </select>
                       </div>
                     </div>
-
                     <div>
                       <label
                         htmlFor="region"
@@ -346,11 +343,9 @@ export default function Example() {
                     </div>
                   </RadioGroup>
                 </div>
-
                 {/* Payment */}
                 <div className="mt-10 border-t border-gray-200 pt-10">
                   <h2 className="text-lg font-medium text-gray-900">Payment</h2>
-
                   <fieldset className="mt-4">
                     <legend className="sr-only">Payment type</legend>
                     <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
