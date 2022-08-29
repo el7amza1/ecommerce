@@ -1,9 +1,11 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import { Fragment } from 'react'
+import { parse } from 'path'
+import { Fragment, useEffect, useState } from 'react'
 import { CartItem, Product } from 'types'
 import Dropdown from './dropdown'
+import ProductCart from './ProductCart'
 
 const cart: CartItem[] = [
   {
@@ -11,9 +13,9 @@ const cart: CartItem[] = [
     name: 'Throwback Hip Bag',
     href: '#',
     color: 'Salmon',
-    price: '$90.00',
+    price: '90.00',
     quantity: 1,
-    availableQty: 4,
+    availableQty: 5,
     imageSrc:
       'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
     imageAlt:
@@ -24,7 +26,7 @@ const cart: CartItem[] = [
     name: 'Medium Stuff Satchel',
     href: '#',
     color: 'Blue',
-    price: '$32.00',
+    price: '32.00',
     quantity: 1,
     availableQty: 4,
     imageSrc:
@@ -32,16 +34,15 @@ const cart: CartItem[] = [
     imageAlt:
       'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
   },
-
-  // More cart...
 ]
 
-type props = {
-  open: boolean
-  setOpen: (open: boolean) => void
-}
 
-export default function ShoppingCartDrawer({ open, setOpen }: props) {
+export default function ShoppingCartDrawer({ open, setOpen }: any) {
+  type props = {
+    open: boolean
+    setOpen: (open: boolean) => void
+  }
+ 
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
@@ -96,54 +97,7 @@ export default function ShoppingCartDrawer({ open, setOpen }: props) {
                             className="-my-6 divide-y divide-gray-200"
                           >
                             {cart.map((product) => (
-                              <li key={product.id} className="flex py-6">
-                                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                  <img
-                                    src={product.imageSrc}
-                                    alt={product.imageAlt}
-                                    className="h-full w-full object-cover object-center"
-                                  />
-                                </div>
-
-                                <div className="ml-4 flex flex-1 flex-col">
-                                  <div>
-                                    <div className="flex justify-between text-base font-medium text-gray-900">
-                                      <h3>
-                                        <a href={product.href}>
-                                          {' '}
-                                          {product.name}{' '}
-                                        </a>
-                                      </h3>
-                                      <p className="ml-4">{product.price}</p>
-                                    </div>
-                                    <p className="mt-1 text-sm text-gray-500">
-                                      {product.color}
-                                    </p>
-                                  </div>
-                                  <div className="flex flex-1 items-end justify-between text-sm">
-                                    <p className="text-gray-500">
-                                      <Dropdown
-                                        onChange={() => {
-                                          console.log('hello world')
-                                        }}
-                                        values={Array.from(
-                                          Array(product.availableQty),
-                                          (_, i) => i + 1
-                                        )}
-                                      />
-                                    </p>
-
-                                    <div className="flex">
-                                      <button
-                                        type="button"
-                                        className="font-medium text-indigo-600 hover:text-indigo-500"
-                                      >
-                                        Remove
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </li>
+                              <ProductCart product={product}/>
                             ))}
                           </ul>
                         </div>
