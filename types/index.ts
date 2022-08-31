@@ -1,12 +1,23 @@
 export interface Product {
-  id: number
+  id: string
   name: string
   href: string
   color: string
-  price: string
-  availableQty: number
-  imageSrc: string
-  imageAlt: string
+  price: number
+  availableQty?: number
+  src: string
+  alt: string
+  description: string
+  highlights:string
+  details:string
+  images?: Image[]
+}
+
+export type Image = {
+  id: string
+  productId: string
+  src: string
+  alt: string
 }
 
 export interface CartItem extends Product {
