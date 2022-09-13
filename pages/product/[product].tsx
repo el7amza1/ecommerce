@@ -95,7 +95,7 @@ export default function ProductPage() {
   const [open, setOpen] = useState(false)
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
-
+  
   return (
     <Layout>
       <main className="pt-10 sm:pt-8 md:pt-0">

@@ -1,6 +1,11 @@
 import type { NextPage } from 'next'
 import Layout from 'components/layout'
-
+import { useEffect, useState } from 'react'
+import { useAppDispatch, useAppSelector } from 'redux/hooks'
+// import { getProducts } from 'utils/api'
+import axios from 'axios'
+import { getAllProducts } from 'redux/product'
+//
 const collections = [
   {
     name: "Women's",
@@ -25,18 +30,19 @@ const collections = [
       'Person sitting at a wooden desk with paper note organizer, pencil and tablet.',
   },
 ]
-const trendingProducts = [
-  {
-    id: 1,
-    name: 'Leather Long Wallet',
-    color: 'Natural',
-    price: '$75',
-    href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-04-trending-product-02.jpg',
-    imageAlt: 'Hand stitched, orange leather long wallet.',
-  }
-]
+// const trendingProducts = [
+//   {
+//     id: 1,
+//     name: 'Leather Long Wallet',
+//     color: 'Natural',
+//     price: '$75',
+//     href: '#',
+//     imageSrc:
+//       'https://tailwindui.com/img/ecommerce-images/home-page-04-trending-product-02.jpg',
+//     imageAlt: 'Hand stitched, orange leather long wallet.',
+//   }
+// ]
+//
 const perks = [
   {
     name: 'Free returns',
@@ -69,6 +75,25 @@ const perks = [
 ]
 
 const Home: NextPage = () => {
+  
+
+  const dispatch = useAppDispatch()
+   const getProducts = async () => {
+    try {
+      const res =  await axios.get("http://localhost:3000/api/product")
+    dispatch(getAllProducts(res.data.Product))
+    console.log(res.data.Product);
+    } catch (error) {
+      console.log(error);
+      
+    }
+
+}
+useEffect(()=>{
+   getProducts()
+  
+  },[])
+  const trendingProducts= useAppSelector(state=> state.product.products)
   return (
     <div className="">
       <Layout>

@@ -7,9 +7,9 @@ import { CartItem, Product } from 'types'
 import Dropdown from './dropdown'
 import ProductCart from './ProductCart'
 
-const cart: CartItem[] = [
+const cart: any = [
   {
-    id: 1,
+    id: '1',
     name: 'Throwback Hip Bag',
     href: '#',
     color: 'Salmon',
@@ -22,7 +22,7 @@ const cart: CartItem[] = [
       'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
   },
   {
-    id: 2,
+    id: '2',
     name: 'Medium Stuff Satchel',
     href: '#',
     color: 'Blue',
@@ -96,7 +96,7 @@ export default function ShoppingCartDrawer({ open, setOpen }: any) {
                             role="list"
                             className="-my-6 divide-y divide-gray-200"
                           >
-                            {cart.map((product) => (
+                            {cart.map((product:Product) => (
                               <ProductCart product={product}/>
                             ))}
                           </ul>

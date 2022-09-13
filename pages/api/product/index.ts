@@ -13,7 +13,7 @@ const handler = (req:NextApiRequest,res:NextApiResponse)=>{
           // optional: custom function to parse the cells
         },
         function(err:any, data:any) {
-            res.status(200).json({data})
+            res.status(200).json(data)
         }
     )
 }

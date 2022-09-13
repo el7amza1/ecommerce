@@ -1,16 +1,15 @@
 export interface Product {
-  id: string
+  id:  string
   name: string
   href: string
   color: string
-  price: number
+  price: string
   availableQty?: number
-  src: string
-  alt: string
-  description: string
-  highlights:string
+  description?: string
+  highlights?:string
   details:string
-  images?: Image[]
+  imageSrc?:string
+  imageAlt?:string
 }
 
 export type Image = {
